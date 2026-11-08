@@ -6,6 +6,8 @@ import com.breadhardit.travelagencykata.domain.Customer;
 import com.breadhardit.travelagencykata.infrastructure.persistence.entity.CustomerEntity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.time.LocalDate;
 import java.util.Optional;
 
 @Repository
@@ -39,6 +41,8 @@ public class CustomersRepositoryAdapter implements CustomersRepository {
                 .passportNumber(customer.getPassportNumber())
                 .enrollmentDate(customer.getEnrollmentDate())
                 .active(customer.getActive())
+                .enrollmentDate(customer.getEnrollmentDate() != null? customer.getEnrollmentDate(): LocalDate.now())
+                .active(customer.getActive() != null? customer.getActive(): true)
                 .build();
     }
 
